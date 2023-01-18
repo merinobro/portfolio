@@ -1,0 +1,349 @@
+/* Reset / Normalize -------------- */
+
+:root {
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+/* Some global variables ------ */
+
+$bckgrnd-color: #FDFDFD;
+$dark-gray: rgb(72, 72, 72);
+
+/* Body general settings -----------*/
+
+body {
+    /* setting 95vh instead of 100vh, to avoid a useless scroll bar */
+    min-height: 95vh;
+    background-color: $bckgrnd-color;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+/* Header -----------------------  */
+
+.header {
+    height: 10rem;
+    width: 100%;
+    background-color: $bckgrnd-color;
+    // opacity: .95;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    padding-top: 1rem;
+    padding-bottom: .8rem;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (min-width: 501px) {
+        height: 6rem;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        flex-direction: row; 
+    }
+
+    @media screen and (min-width: 640px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.navbar {
+    ul {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        font-size: 1.8rem;
+        font-weight: 500;
+        width: fit-content;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+        margin: 0 1rem;
+        padding: .4rem .9rem;
+        letter-spacing: 1px;
+        border-radius: 2rem;
+
+        &:hover {
+            color: #FDFDFD;
+            background-color: black;
+            border-radius: 2rem;
+            transition-duration: .5s;
+        }
+
+        &:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+.logo {
+    height: 5rem;
+    width: 10rem;
+    background-image: url(../assets/logo05.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+/* Main Section = Cards (that flip on hover) for individual projects */
+
+.heading {
+    position: relative;
+    top: 15rem;
+    text-align: center;
+
+    @media screen and (min-width: 501px) {
+        top: 10rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        @media screen and (min-width: 768px ) {
+            font-size: 2.2rem;
+        } 
+
+        @media screen and (min-width: 1089px ) {
+            font-size: 2.4rem;
+        } 
+    }
+
+    p {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        color: $dark-gray;
+
+        @media screen and (min-width: 768px ) {
+            font-size: 1.3rem;
+        } 
+
+        @media screen and (min-width: 1089px ) {
+            font-size: 1.5rem;
+        } 
+    }
+}
+
+/* This serves as the Flex-Container for my cards */
+
+.card-space {
+    min-height: 80vh;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 4rem;
+    align-items: center;
+
+    @media screen and (min-width: 501px) {
+        margin-top: 14rem;
+    }
+
+    @media screen and (min-width: 768px ) {
+        flex-direction: row;
+        flex-wrap: wrap;
+    } 
+
+    @media screen and (min-width: 980px ) {
+        align-items: flex-start;
+    }
+}
+
+/* Here I make the card layout; first a generic container, and then I have one class each for the front and the back of the card */
+
+.card {
+    height: 40rem;
+    width: 30rem;
+    max-width: 36rem;
+    position: relative;
+    perspective: 100rem;
+    transform-style: preserve-3d;
+    transition-duration: 1.5s;
+    
+    &:hover { 
+        .card-front {
+        transform: rotateY(-180deg);
+        }
+
+        .card-back {
+        transform: rotateY(0deg);
+        visibility: visible;
+        }
+    }
+
+    @media screen and (min-width: 1200px ) {
+        flex-grow: 1;
+    } 
+}
+
+.card-front {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 1rem;
+    /* box shadow for subtle 3D effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* after the styling above, 3 lines below are responsible for the flip behavior */
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+    transition-duration: 1.5s;
+
+    .preview-pic {
+        width: 25rem;
+        height: 25rem;
+        background-image: url(https://placeimg.com/250/150/tech);
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 500;
+        padding-bottom: 2rem;
+    }
+}
+
+/* In this section I insert the actual preview picture for each project I included */
+
+.card-front-1 {
+    .preview-pic {
+        background-image: url(../assets/design01.jpg);
+        background-size: cover;
+    }
+}
+
+.card-front-2 {
+    .preview-pic {
+        background-image: url(../assets/neumorph.jpg);
+        background-size: cover;
+    }
+}
+
+.card-front-3 {
+    .preview-pic {
+        background-image: url(../assets/gallery02.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.card-front-4 {
+    .preview-pic {
+        background-image: url(../assets/speaker01.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.card-front-5 {
+    .preview-pic {
+        background-image: url(../assets/tech01.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.card-front-6 {
+    .preview-pic {
+        background-image: url(../assets/coffee01.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+
+
+/* End of section inserting actual preview pictures */
+
+.card-back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 1rem;
+    /* box shadow for subtle 3D effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    /* after the styling above, 3 lines below are responsible for the flip behavior */
+    backface-visibility: hidden;
+    visibility: hidden;
+    transform: rotateY(180deg);
+    transition-duration: 1.5s;
+
+    h2 {
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: $dark-gray;
+    }
+
+    p {
+        width: 80%;
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    .more-info p {
+        font-size: 1.3rem;
+        color: $dark-gray;
+    }
+
+    .more-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            color: black;
+            text-decoration: none;
+            font-size: 1.4rem;
+            margin-top: .8rem;
+            padding: .4rem .9rem;
+            border: 1px solid black;
+            border-radius: 2rem;
+    
+            &:hover {
+                color: #FDFDFD;
+                background-color: black;
+                border-radius: 2rem;
+                transition-duration: .5s;
+                text-decoration: none;
+            }
+        }
+
+        i {
+            margin-right: .5rem;
+        }
+    }
+}

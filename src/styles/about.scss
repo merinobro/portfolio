@@ -1,0 +1,216 @@
+/* Reset / Normalize -------------- */
+
+:root {
+    font-size: 62.5%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+}
+
+img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+}
+
+/* Some global variables ------ */
+
+$bckgrnd-color: #FDFDFD;
+$dark-gray: rgb(72, 72, 72);
+
+/* Body general settings -----------*/
+
+body {
+    /* setting 95vh instead of 100vh, to avoid a useless scroll bar */
+    min-height: 95vh;
+    background-color: $bckgrnd-color;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+/* Header -----------------------  */
+
+.header {
+    height: 10rem;
+    width: 100%;
+    background-color: $bckgrnd-color;
+    opacity: .86;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (min-width: 501px) {
+        height: 6rem;
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        flex-direction: row; 
+    }
+
+    @media screen and (min-width: 640px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+.navbar {
+    ul {
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        font-size: 1.8rem;
+        font-weight: 500;
+        width: fit-content;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+        margin: 0 1rem;
+        padding: .4rem .9rem;
+        letter-spacing: 1px;
+        border-radius: 2rem;
+
+        &:hover {
+            color: #FDFDFD;
+            background-color: black;
+            border-radius: 2rem;
+            transition-duration: .5s;
+        }
+
+        &:active {
+            text-decoration: underline;
+        }
+    }
+}
+
+.logo {
+    height: 5rem;
+    width: 10rem;
+    background-image: url(../assets/logo05.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+/* Main-------------------  */
+
+/* The <main> serves as a flex container for the contents of this page, which are 1) an avatar picture with a Title underneath, and 2) a short bio text w/ links to social pages -------------*/
+
+main {
+    width: 80%;
+    height: 80vh;
+    position: relative;
+    top: 12rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    @media screen and (min-width: 501px) {
+        top: 8rem;
+    }
+
+    @media screen and (min-width: 1200px) {
+        width: 80%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+}
+
+/* Avatar Section w/ title------------- */
+
+.avatar {
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-pic {
+    min-width: 20rem;
+    min-height: 20rem;
+    max-width: 20rem;
+    max-height: 20rem;
+    background-image: url(../assets/webavatar.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+
+}
+
+h1 {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 2rem
+}
+
+/* Text section w/ links ------------- */
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   
+    p {
+        width: 80%;
+        margin: 0 auto 5rem auto;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        text-align: center;
+
+        
+        @media screen and (min-width: 1200px) {
+            width: 80%;
+        }
+        
+    }
+
+    .about-links {
+        list-style-type: none;
+        display: flex;
+    
+        li a {
+            text-decoration: none;
+            color: black;
+            font-size: 1.8rem;
+            margin: 0 2rem;
+            padding: .4rem .9rem;
+            border: 1px solid black;
+            border-radius: 2rem;
+    
+            &:hover {
+                color: #FDFDFD;
+                background-color: black;
+                border-radius: 2rem;
+                transition-duration: .5s;
+                text-decoration: none;
+            }
+    
+            &:active {
+                text-decoration: underline;
+            }
+        }
+
+        li i {
+            margin-right: .5rem;
+        }
+    }
+
+}
+
+
