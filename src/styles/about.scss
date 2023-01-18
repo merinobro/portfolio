@@ -105,18 +105,30 @@ body {
 /* The <main> serves as a flex container for the contents of this page, which are 1) an avatar picture with a Title underneath, and 2) a short bio text w/ links to social pages -------------*/
 
 main {
-    width: 80%;
+    width: 90%;
     height: 80vh;
     position: relative;
-    top: 12rem;
+    top: 25rem;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 
+    @media screen and (min-width: 428px) {
+        top: 22rem;
+    }
+
     @media screen and (min-width: 501px) {
-        top: 8rem;
+        top: 18rem;
+    }
+
+    @media screen and (min-width: 560px) {
+        top: 15rem;
+    }
+
+    @media screen and (min-width: 850px) {
+        top: 12rem;
     }
 
     @media screen and (min-width: 1200px) {
@@ -161,6 +173,8 @@ h1 {
 /* Text section w/ links ------------- */
 
 .about-text {
+    margin-top: 4rem;
+    //margin line above is new, need to check the BPs
     display: flex;
     flex-direction: column;
     justify-content: space-between;
